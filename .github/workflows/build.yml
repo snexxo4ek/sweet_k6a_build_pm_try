@@ -39,6 +39,11 @@ jobs:
           DEFAULT_BRANCH=$(git remote show sm7150 | awk '/HEAD branch/ {print $NF}')
           git fetch sm7150 $DEFAULT_BRANCH
           git reset --hard sm7150/$DEFAULT_BRANCH
+          pmbootstrap config device xiaomi-sweet_k6a
+          pmbootstrap config ui phosh
+          pmbootstrap config jobs $(nproc)
+          pmbootstrap config build_pkgs_on_install True
+
 
       - name: Check kernel branch
         if: matrix.version == 'default'
