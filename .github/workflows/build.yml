@@ -10,6 +10,7 @@ env:
 
 jobs:
   build-image:
+    timeout-minutes: 360
     strategy:
       matrix:
         version: ["next", "default"]
