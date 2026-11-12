@@ -39,7 +39,8 @@ jobs:
           DEFAULT_BRANCH=$(git remote show sm7150 | awk '/HEAD branch/ {print $NF}')
           git fetch sm7150 $DEFAULT_BRANCH
           git reset --hard sm7150/$DEFAULT_BRANCH
-          export ARCH=arm64
+          pmbootstrap config aports "$HOME/.local/var/pmbootstrap/cache_git/pmaports"
+          pmbootstrap config work "$HOME/.local/var/pmbootstrap"
           pmbootstrap config ui phosh
           pmbootstrap config jobs $(nproc)
           pmbootstrap config build_pkgs_on_install True
@@ -64,6 +65,7 @@ jobs:
       - name: Compile kernel with envkernel
         run: |
           cd linux
+          export ARCH=arm64
           shopt -s expand_aliases
           source ../pmbootstrap/helpers/envkernel.sh
           make defconfig sm7150.config
