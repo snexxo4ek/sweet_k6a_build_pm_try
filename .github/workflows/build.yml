@@ -25,10 +25,10 @@ jobs:
 
       - name: Install pmbootstrap from git
         run: |
-         git clone --depth=1 https://gitlab.nura.eco
-         mkdir -p ~/.local/bin
-         ln -s "$PWD/pmbootstrap/pmbootstrap.py" ~/.local/bin/pmbootstrap
-         pmbootstrap --version
+          git clone --depth=1 https://nura.eco
+          mkdir -p ~/.local/bin
+          ln -s "$PWD/pmbootstrap/pmbootstrap.py" ~/.local/bin/pmbootstrap
+          pmbootstrap --version
 
       - name: Set up pmaports
         run: |
